@@ -1,7 +1,9 @@
+import { Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { client } from "../../utils";
 import { APL_BASE_URL } from "./../../constant";
 import Filter from "./filter";
+
 export default function CountryFilter() {
   const [countries, setCountries] = useState(null);
   const fetchCountries = async () => {
@@ -15,5 +17,9 @@ export default function CountryFilter() {
   useEffect(() => {
     fetchCountries();
   }, []);
-  return <Filter data={countries} />;
+  return (
+    <Flex flexDirection="column" overflow="auto">
+      <Filter data={countries} />
+    </Flex>
+  );
 }

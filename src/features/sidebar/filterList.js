@@ -1,12 +1,16 @@
+import { Box, List, ListItem } from "@chakra-ui/react";
 import FilterItem from "./filterItem";
+
 export default function FilterList(props) {
   return (
-    <ul>
-      {props?.data?.map((ele, i) => (
-        <li key={i}>
-          <FilterItem name={ele.name} code={ele.code} />
-        </li>
-      ))}
-    </ul>
+    <Box overflow="auto" px={8}>
+      <List>
+        {props?.data?.map((ele, i) => (
+          <ListItem key={i}>
+            <FilterItem name={ele.name} code={ele.code} />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
 }

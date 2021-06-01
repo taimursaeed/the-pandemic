@@ -15,8 +15,8 @@ export default function Filter(props) {
   };
 
   return (
-    <div>
-      <FormControl id="email">
+    <>
+      <FormControl id="email" px={8} mb={4}>
         <FormLabel>Filter Countries</FormLabel>
         <Input
           type="text"
@@ -26,6 +26,6 @@ export default function Filter(props) {
         />
       </FormControl>
       <FilterList data={filterdItems} />
-    </div>
+    </>
   );
 }

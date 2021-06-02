@@ -20,37 +20,103 @@ export default function CountrySummary(props) {
               <small>{getFormatedDate(props.updated_at)}</small>
             </Text>
           </Flex>
-          <Flex>
+          <Flex mb="8">
             <Box
               flex="1"
-              bg="gray.100"
-              boxShadow="md"
+              bg="white"
+              boxShadow="sm"
               p="4"
               rounded="8"
               color="black"
+              border="1px"
+              borderColor="gray.200"
+              mr="8"
             >
               <Heading as="h3" size="md" mb="2">
+                <Text
+                  style={{
+                    width: "0.75rem",
+                    height: "0.75rem",
+                    display: "inline-block",
+                    borderRadius: "100%",
+                  }}
+                  background="blue.400"
+                  mr="2"
+                ></Text>
                 Total
               </Heading>
               <Text fontSize="2xl">{props.latest_data.confirmed || 0}</Text>
             </Box>
-            <Spacer />
-            <Box flex="1" bg="gray.100" boxShadow="md" p="4" rounded="8">
+            <Box
+              flex="1"
+              bg="white"
+              boxShadow="sm"
+              p="4"
+              rounded="8"
+              border="1px"
+              borderColor="gray.200"
+              mr="8"
+            >
               <Heading as="h3" size="md" mb="2">
+                <Text
+                  style={{
+                    width: "0.75rem",
+                    height: "0.75rem",
+                    display: "inline-block",
+                    borderRadius: "100%",
+                  }}
+                  background="orange.400"
+                  mr="2"
+                ></Text>
                 Active
               </Heading>
               <Text fontSize="2xl">{props.timeline[0]?.active || 0}</Text>
             </Box>
-            <Spacer />
-            <Box flex="1" bg="gray.100" boxShadow="md" p="4" rounded="8">
+            <Box
+              flex="1"
+              bg="white"
+              boxShadow="sm"
+              p="4"
+              rounded="8"
+              border="1px"
+              borderColor="gray.200"
+              mr="8"
+            >
               <Heading as="h3" size="md" mb="2">
+                <Text
+                  style={{
+                    width: "0.75rem",
+                    height: "0.75rem",
+                    display: "inline-block",
+                    borderRadius: "100%",
+                  }}
+                  background="red.400"
+                  mr="2"
+                ></Text>
                 Fatal
               </Heading>
               <Text fontSize="2xl">{props.latest_data.deaths || 0}</Text>
             </Box>
-            <Spacer />
-            <Box flex="1" bg="gray.100" boxShadow="md" p="4" rounded="8">
+            <Box
+              flex="1"
+              bg="white"
+              boxShadow="sm"
+              p="4"
+              rounded="8"
+              border="1px"
+              borderColor="gray.200"
+            >
               <Heading as="h3" size="md" mb="2">
+                <Text
+                  style={{
+                    width: "0.75rem",
+                    height: "0.75rem",
+                    display: "inline-block",
+                    borderRadius: "100%",
+                  }}
+                  background="green.400"
+                  mr="2"
+                ></Text>
                 Recovered
               </Heading>
               <Text fontSize="2xl">{props.latest_data.recovered || 0}</Text>

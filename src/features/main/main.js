@@ -1,3 +1,13 @@
+import { Flex, Heading } from "@chakra-ui/react";
+import AppContext from "./../../context";
 export default function Main() {
-  return <div>main</div>;
+  return (
+    <AppContext.Consumer>
+      {(value) => (
+        <Heading as="h2" size="lg" mb={8}>
+          {value}
+        </Heading>
+      )}
+    </AppContext.Consumer>
+  );
 }

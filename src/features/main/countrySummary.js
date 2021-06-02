@@ -13,15 +13,26 @@ export default function CountrySummary(props) {
     fetchData();
   }, [props]);
 
+  const getFormatedDate = (date) => {
+    const updateTime = ((Date.now() - new Date(date)) / (60 * 1000)).toFixed();
+    if (!updateTime) return "Updated just now";
+    else if (updateTime < 60) return `Updated ${updateTime} mins ago`;
+    else return "Updated more than an hour ago";
+  };
+
   return (
     <>
       {typeof country === "object" && (
         <>
-          <Heading as="h2" size="lg" mb={8}>
-            {country.name}
-          </Heading>
-          <small>{country.updated_at}</small>
-          <Flex color="white">
+          <Flex alignItems="center" mb="8">
+            <Heading as="h2" size="lg">
+              {country.name}
+            </Heading>
+            <Text ml="4">
+              <small>{getFormatedDate(country.updated_at)}</small>
+            </Text>
+          </Flex>
+          <Flex>
             <Box
               flex="1"
               bg="gray.100"
@@ -36,21 +47,21 @@ export default function CountrySummary(props) {
               <Text fontSize="2xl">{country.latest_data.confirmed || 0}</Text>
             </Box>
             <Spacer />
-            <Box flex="1" bg="blue.400" boxShadow="md" p="4" rounded="8">
+            <Box flex="1" bg="gray.100" boxShadow="md" p="4" rounded="8">
               <Heading as="h3" size="md" mb="2">
                 Active
               </Heading>
               <Text fontSize="2xl">{country.timeline[0]?.active || 0}</Text>
             </Box>
             <Spacer />
-            <Box flex="1" bg="red.400" boxShadow="md" p="4" rounded="8">
+            <Box flex="1" bg="gray.100" boxShadow="md" p="4" rounded="8">
               <Heading as="h3" size="md" mb="2">
                 Fatal
               </Heading>
               <Text fontSize="2xl">{country.latest_data.deaths || 0}</Text>
             </Box>
             <Spacer />
-            <Box flex="1" bg="green.400" boxShadow="md" p="4" rounded="8">
+            <Box flex="1" bg="gray.100" boxShadow="md" p="4" rounded="8">
               <Heading as="h3" size="md" mb="2">
                 Recovered
               </Heading>

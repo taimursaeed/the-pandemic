@@ -5,7 +5,7 @@ export default function Main() {
     <AppContext.Consumer>
       {(value) => (
         <Heading as="h2" size="lg" mb={8}>
-          {value}
+          {value.country}
         </Heading>
       )}
     </AppContext.Consumer>

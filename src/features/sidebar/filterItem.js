@@ -1,22 +1,32 @@
-import { Box, Flex } from "@chakra-ui/react";
-import React from "react";
-import { Link } from "react-router-dom";
+import { Box, Button, Flex } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
 export default function FilterItem(props) {
+  const history = useHistory();
+  const handleClick = () => {
+    props.setItem(`${props.code}`);
+    history.push(`/${props.code}`);
+  };
   return (
-    <Link to={`/${props.code}`}>
-      <Flex
-        justifyContent="space-between"
-        p={4}
-        bg="white"
-        boxShadow="sm"
-        mb={2}
-        rounded="md"
-      >
+    <Button
+      onClick={handleClick}
+      boxShadow="md"
+      mb="2"
+      p="4"
+      isFullWidth
+      style={{
+        whiteSpace: "normal",
+        wordWrap: "break-word",
+        height: "auto",
+      }}
+      colorScheme="blue"
+      variant="outline"
+    >
+      <Flex justifyContent="space-between" flex="1" textAlign="left">
         {props.name}
-        <Box ml={4}>
+        <Box ml="4">
           <strong>{props.code}</strong>
         </Box>
       </Flex>
-    </Link>
+    </Button>
   );
 }

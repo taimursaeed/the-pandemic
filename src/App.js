@@ -5,10 +5,12 @@ import "@fontsource/inter/700.css";
 import Dashboard from "./features/dashboard/dashboard";
 import theme from "./theme";
 import AppContext from "./context";
+import { useState } from "react";
 export default function App() {
+  const [country, setCountry] = useState("PK");
   return (
     <ChakraProvider theme={theme}>
-      <AppContext.Provider value="PK">
+      <AppContext.Provider value={{ country, setCountry }}>
         <Dashboard />
       </AppContext.Provider>
     </ChakraProvider>

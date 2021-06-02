@@ -2,20 +2,20 @@ import { FormControl, FormLabel, Input } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import FilterList from "./filterList";
 
-export default function Filter(props) {
-  const [filterdItems, setFilterdItems] = useState(props.data);
+export default function Filter({ data, ...props }) {
+  const [filterdItems, setFilterdItems] = useState(data);
 
-  const getFilterdItems = (data, val = "") => {
-    return data?.filter((item) => item.name.includes(val));
+  const getFilterdItems = (items, val = "") => {
+    return items?.filter((item) => item.name.includes(val));
   };
 
   const handleChange = (e) => {
     const filterVal = e.target.value.toLowerCase();
-    setFilterdItems(getFilterdItems(props.data, filterVal));
+    setFilterdItems(getFilterdItems(data, filterVal));
   };
   useEffect(() => {
-    setFilterdItems(props.data);
-  }, [props]);
+    setFilterdItems(data);
+  }, [data]);
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function Filter(props) {
           autoCorrect="off"
         />
       </FormControl>
-      <FilterList data={filterdItems} />
+      <FilterList data={filterdItems} {...props} />
     </>
   );
 }

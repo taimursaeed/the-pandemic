@@ -4,6 +4,7 @@ import { client } from "../../utils";
 import { APL_BASE_URL } from "./../../constant";
 import Filter from "./filter";
 import { Spinner, Center } from "@chakra-ui/react";
+import AppContext from "./../../context";
 
 export default function CountryFilter() {
   const [countries, setCountries] = useState(null);
@@ -19,13 +20,17 @@ export default function CountryFilter() {
     fetchCountries();
   }, []);
   return (
-    <Flex flexDirection="column" overflow="auto" height="100%">
-      <Filter data={countries} />
-      {!countries && (
-        <Center mt={4}>
-          <Spinner />
-        </Center>
+    <AppContext.Consumer>
+      {(value) => (
+        <Flex flexDirection="column" overflow="auto" height="100%">
+          <Filter data={countries} setItem={value.setCountry} />
+          {!countries && (
+            <Center mt={4}>
+              <Spinner />
+            </Center>
+          )}
+        </Flex>
       )}
-    </Flex>
+    </AppContext.Consumer>
   );
 }

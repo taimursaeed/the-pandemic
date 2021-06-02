@@ -1,5 +1,5 @@
 import { FormControl, FormLabel, Input } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FilterList from "./filterList";
 
 export default function Filter(props) {
@@ -13,6 +13,9 @@ export default function Filter(props) {
     const filterVal = e.target.value.toLowerCase();
     setFilterdItems(getFilterdItems(props.data, filterVal));
   };
+  useEffect(() => {
+    setFilterdItems(props.data);
+  }, [props]);
 
   return (
     <>

@@ -3,7 +3,7 @@ import FilterItem from "./filterItem";
 
 export default function FilterList({ data, ...props }) {
   return (
-    <Box overflow="auto" px={8}>
+    <Box overflow="auto" px={8} py="2">
       <List>
         {data?.map((ele, i) => (
           <ListItem key={i}>

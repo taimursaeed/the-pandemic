@@ -18,7 +18,7 @@ export default function FilterItem(props) {
         wordWrap: "break-word",
         height: "auto",
       }}
-      colorScheme="blue"
+      colorScheme="black"
       variant="outline"
     >
       <Flex justifyContent="space-between" flex="1" textAlign="left">

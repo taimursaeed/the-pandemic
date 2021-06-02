@@ -6,7 +6,7 @@ export default function Dashboard() {
   return (
     <Router>
       <Flex height="100%">
-        <Box bg="blue.100" w="xs" py={8} height="100%" overflow="hidden">
+        <Box bg="#FFC800" w="xs" py={8} height="100%" overflow="hidden">
           <Sidebar />
         </Box>
         <Box p={8} flex={1}>

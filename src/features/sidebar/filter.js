@@ -26,6 +26,9 @@ export default function Filter({ data, ...props }) {
           onChange={handleChange}
           autoComplete="off"
           autoCorrect="off"
+          colorScheme="facebook"
+          background="gray.100"
+          focusBorderColor="black"
         />
       </FormControl>
       <FilterList data={filterdItems} {...props} />

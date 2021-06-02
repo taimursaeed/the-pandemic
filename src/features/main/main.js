@@ -1,13 +1,10 @@
-import { Flex, Heading } from "@chakra-ui/react";
+import React from "react";
 import AppContext from "./../../context";
+import CountrySummary from "./countrySummary";
 export default function Main() {
   return (
     <AppContext.Consumer>
-      {(value) => (
-        <Heading as="h2" size="lg" mb={8}>
-          {value.country}
-        </Heading>
-      )}
+      {(value) => <CountrySummary {...value} />}
     </AppContext.Consumer>
   );
 }

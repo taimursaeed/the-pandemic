@@ -7,6 +7,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { ReactComponent as Info } from "./../../assets/info.svg";
+import CountUp from "react-countup";
+
 export default function CountrySummary(props) {
   const getFormatedDate = (date) => {
     const updateTime = ((Date.now() - new Date(date)) / (60 * 1000)).toFixed();
@@ -66,7 +68,12 @@ export default function CountrySummary(props) {
           </Heading>
           <SkeletonText isLoaded={props?.latest_data?.confirmed}>
             <Text fontSize="2xl" fontWeight="bold">
-              {props?.latest_data?.confirmed}
+              <CountUp
+                separator=","
+                duration={0.5}
+                start={0}
+                end={props?.latest_data?.confirmed}
+              ></CountUp>
             </Text>
           </SkeletonText>
         </Box>
@@ -104,7 +111,12 @@ export default function CountrySummary(props) {
 
           <SkeletonText isLoaded={props?.timeline?.[0]?.active || 0}>
             <Text fontSize="2xl" fontWeight="bold">
-              {props?.timeline?.[0]?.active || 0}
+              <CountUp
+                separator=","
+                duration={0.5}
+                start={0}
+                end={props?.timeline?.[0]?.active || 0}
+              ></CountUp>
             </Text>
           </SkeletonText>
         </Box>
@@ -140,7 +152,12 @@ export default function CountrySummary(props) {
           </Heading>
           <SkeletonText isLoaded={props?.latest_data?.deaths}>
             <Text fontSize="2xl" fontWeight="bold">
-              {props?.latest_data?.deaths}
+              <CountUp
+                separator=","
+                duration={0.5}
+                start={0}
+                end={props?.latest_data?.deaths}
+              ></CountUp>
             </Text>
           </SkeletonText>
         </Box>
@@ -176,7 +193,12 @@ export default function CountrySummary(props) {
           </Heading>
           <SkeletonText isLoaded={props?.latest_data?.recovered}>
             <Text fontSize="2xl" fontWeight="bold">
-              {props?.latest_data?.recovered}
+              <CountUp
+                separator=","
+                duration={0.5}
+                start={0}
+                end={props?.latest_data?.recovered}
+              ></CountUp>
             </Text>
           </SkeletonText>
         </Box>

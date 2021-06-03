@@ -25,30 +25,34 @@ export default function CountryFilter() {
       {(value) => (
         <Flex flexDirection="column" overflow="auto" height="100%">
           <Filter data={countries} setItem={value.setCountry} />
-          <Skeleton
-            isLoaded={countries}
-            mx="8"
-            mb="4"
-            height="20px"
-            startColor="yellow.500"
-            endColor="yellow.800"
-          />
-          <Skeleton
-            isLoaded={countries}
-            mx="8"
-            mb="4"
-            height="20px"
-            startColor="yellow.500"
-            endColor="yellow.800"
-          />
-          <Skeleton
-            isLoaded={countries}
-            mx="8"
-            mb="4"
-            height="20px"
-            startColor="yellow.500"
-            endColor="yellow.800"
-          />
+          {!countries && (
+            <>
+              <Skeleton
+                isLoaded={countries}
+                mx="8"
+                mb="4"
+                height="20px"
+                startColor="yellow.500"
+                endColor="yellow.800"
+              />
+              <Skeleton
+                isLoaded={countries}
+                mx="8"
+                mb="4"
+                height="20px"
+                startColor="yellow.500"
+                endColor="yellow.800"
+              />
+              <Skeleton
+                isLoaded={countries}
+                mx="8"
+                mb="4"
+                height="20px"
+                startColor="yellow.500"
+                endColor="yellow.800"
+              />
+            </>
+          )}
         </Flex>
       )}
     </AppContext.Consumer>

@@ -8,7 +8,7 @@ export default function CountryGraph(props) {
   const [graphHeight, setGraphHeight] = useState(0);
   const resizeGraph = () => {
     const ele = window.document.body;
-    setGraphWidth(ele.clientWidth > 768 ? ele.clientWidth - 410 : "100%");
+    setGraphWidth(ele.clientWidth > 768 ? ele.clientWidth - 415 : "100%");
     setGraphHeight(ele.clientWidth > 768 ? ele.clientHeight - 250 : "500px");
   };
 
@@ -53,7 +53,16 @@ export default function CountryGraph(props) {
   defaults.scale.grid.drawOnChartArea = false;
 
   return (
-    <Box width={graphWidth} height={graphHeight}>
+    <Box
+      width={graphWidth}
+      height={graphHeight}
+      bg="white"
+      boxShadow="md"
+      p="4"
+      rounded="12"
+      border="1px"
+      borderColor="gray.200"
+    >
       <Line
         data={data}
         options={options}

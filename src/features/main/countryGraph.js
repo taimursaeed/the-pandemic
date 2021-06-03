@@ -1,6 +1,8 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useMemo, useState } from "react";
 import { Line } from "react-chartjs-2";
+import { defaults } from "react-chartjs-2";
+
 export default function CountryGraph(props) {
   const [graphWidth, setGraphWidth] = useState(0);
   const [graphHeight, setGraphHeight] = useState(0);
@@ -23,16 +25,18 @@ export default function CountryGraph(props) {
         {
           label: "Infected",
           data: props?.timeline?.map((i) => i.confirmed).reverse(),
-          fill: false,
+          fill: true,
           borderColor: "#4299E1",
+          backgroundColor: "rgba(66, 153, 225,0.2)",
           borderWidth: 1,
           pointStyle: "line",
         },
         {
           label: "Deaths",
           data: props?.timeline?.map((i) => i.deaths).reverse(),
-          fill: false,
+          fill: true,
           borderColor: "#F56565",
+          backgroundColor: "rgba(245, 101, 101,0.2)",
           borderWidth: 1,
           pointStyle: "line",
         },
@@ -43,6 +47,10 @@ export default function CountryGraph(props) {
   const options = {
     animation: false,
   };
+
+  // Configure chartjs font
+  defaults.font.family = "Inter";
+  defaults.scale.grid.drawOnChartArea = false;
 
   return (
     <Box width={graphWidth} height={graphHeight}>

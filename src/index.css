@@ -1,12 +1,14 @@
-html,
-body,
-#root {
-  height: 100%;
-}
 ::-webkit-scrollbar {
   width: 0.4rem;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background: rgb(31, 31, 31);
+}
+@media screen and (min-width: 60em) {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
 }

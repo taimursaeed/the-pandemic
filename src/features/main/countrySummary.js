@@ -19,11 +19,11 @@ export default function CountrySummary(props) {
     <>
       <Flex mb="8">
         <Skeleton isLoaded={props?.name} minWidth="200px">
-          <Flex alignItems="start">
+          <Flex alignItems="start" flexDirection={["column", "row"]}>
             <Heading as="h2" size="2xl">
               {props?.name}
             </Heading>
-            <Flex ml="3">
+            <Flex ml={["0", "3"]} mt={["3", "0"]}>
               <Info style={{ width: "1rem" }} />
               <Text ml="2" display="flex" alignItems="center">
                 <small>{getFormatedDate(props?.updated_at)}</small>
@@ -32,9 +32,9 @@ export default function CountrySummary(props) {
           </Flex>
         </Skeleton>
       </Flex>
-      <Flex mb="4">
+      <Flex mb="4" flexWrap={["wrap", "nowrap"]}>
         <Box
-          flex="1"
+          flex={["100%", "1"]}
           bg="white"
           boxShadow="sm"
           p="4"
@@ -42,9 +42,16 @@ export default function CountrySummary(props) {
           color="black"
           border="1px"
           borderColor="gray.200"
-          mr="8"
+          mb={["4", "0"]}
+          mr={["0", "8"]}
         >
-          <Heading as="h3" size="sm" mb="2" fontWeight="normal">
+          <Heading
+            as="h3"
+            size="sm"
+            mb="2"
+            fontWeight="normal"
+            whiteSpace="nowrap"
+          >
             <Text
               style={{
                 width: "0.75rem",
@@ -65,16 +72,23 @@ export default function CountrySummary(props) {
         </Box>
 
         <Box
-          flex="1"
+          flex={["100%", "1"]}
           bg="white"
           boxShadow="sm"
           p="4"
           rounded="8"
           border="1px"
           borderColor="gray.200"
-          mr="8"
+          mb={["4", "0"]}
+          mr={["0", "8"]}
         >
-          <Heading as="h3" size="sm" mb="2" fontWeight="normal">
+          <Heading
+            as="h3"
+            size="sm"
+            mb="2"
+            fontWeight="normal"
+            whiteSpace="nowrap"
+          >
             <Text
               style={{
                 width: "0.75rem",
@@ -95,16 +109,23 @@ export default function CountrySummary(props) {
           </SkeletonText>
         </Box>
         <Box
-          flex="1"
+          flex={["100%", "1"]}
           bg="white"
           boxShadow="sm"
           p="4"
           rounded="8"
           border="1px"
           borderColor="gray.200"
-          mr="8"
+          mb={["4", "0"]}
+          mr={["0", "8"]}
         >
-          <Heading as="h3" size="sm" mb="2" fontWeight="normal">
+          <Heading
+            as="h3"
+            size="sm"
+            mb="2"
+            fontWeight="normal"
+            whiteSpace="nowrap"
+          >
             <Text
               style={{
                 width: "0.75rem",
@@ -124,15 +145,23 @@ export default function CountrySummary(props) {
           </SkeletonText>
         </Box>
         <Box
-          flex="1"
+          flex={["100%", "1"]}
           bg="white"
           boxShadow="sm"
           p="4"
           rounded="8"
           border="1px"
           borderColor="gray.200"
+          mb={["4", "0"]}
+          mr={["0", "0"]}
         >
-          <Heading as="h3" size="sm" mb="2" fontWeight="normal">
+          <Heading
+            as="h3"
+            size="sm"
+            mb="2"
+            fontWeight="normal"
+            whiteSpace="nowrap"
+          >
             <Text
               style={{
                 width: "0.75rem",

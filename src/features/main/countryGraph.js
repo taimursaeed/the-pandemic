@@ -6,8 +6,8 @@ export default function CountryGraph(props) {
   const [graphHeight, setGraphHeight] = useState(0);
   const resizeGraph = () => {
     const ele = window.document.body;
-    setGraphWidth(ele.clientWidth - 410);
-    setGraphHeight(ele.clientHeight - 250);
+    setGraphWidth(ele.clientWidth > 768 ? ele.clientWidth - 410 : "100%");
+    setGraphHeight(ele.clientWidth > 768 ? ele.clientHeight - 250 : "500px");
   };
 
   useEffect(() => {

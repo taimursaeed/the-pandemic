@@ -8,18 +8,17 @@ export default function Dashboard() {
     <Router>
       <AppContext.Consumer>
         {(value) => (
-          <Flex height="100%">
+          <Flex height="100%" flexDirection={["column", "row"]}>
             <Box
               bg="#FFC800"
               pt={8}
-              width="350px"
-              height="100%"
+              w={["100%", "350px"]}
+              height={["500px", "100%"]}
               overflow="hidden"
-              flexShrink="0"
             >
               <Sidebar />
             </Box>
-            <Box p={8} flex={1} overflow="hidden">
+            <Box p={8} flex={1} overflow={["auto", "hidden"]}>
               <Main {...value} />
             </Box>
           </Flex>

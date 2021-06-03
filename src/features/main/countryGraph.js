@@ -5,15 +5,17 @@ export default function CountryGraph(props) {
   const [graphWidth, setGraphWidth] = useState(0);
   const [graphHeight, setGraphHeight] = useState(0);
   const resizeGraph = () => {
-    const ele = document.getElementById("graphWrap").getBoundingClientRect();
-    setGraphWidth(ele.width);
-    setGraphHeight(ele.height);
+    const ele = window.document.body;
+    setGraphWidth(ele.clientWidth - 410);
+    setGraphHeight(ele.clientHeight - 250);
   };
 
   useEffect(() => {
     resizeGraph();
-    // alert("mounted");
+    window.addEventListener("resize", resizeGraph);
+    return () => window.removeEventListener("resize", resizeGraph);
   }, [props]);
+
   const data = useMemo(() => {
     return {
       labels: props?.timeline?.map((i) => i.date).reverse(),
@@ -40,32 +42,15 @@ export default function CountryGraph(props) {
 
   const options = {
     animation: false,
-    responsive: true,
-    scales: {
-      yAxes: [
-        {
-          ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
   };
 
-  // Math.floor(Math.random() * 200) + 100
-  const width = graphWidth;
-  const height = graphHeight;
   return (
-    <Box id="graphWrap">
+    <Box width={graphWidth} height={graphHeight}>
       <Line
         data={data}
         options={options}
-        // height="100%"
-        // width={width || 100}
-        // height={height || 100}
-        // onResize={() => {
-        //   alert("resize called");
-        // }}
+        width={graphWidth}
+        height={graphHeight}
       />
     </Box>
   );

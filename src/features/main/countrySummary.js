@@ -32,7 +32,7 @@ export default function CountrySummary(props) {
           </Flex>
         </Skeleton>
       </Flex>
-      <Flex mb="8">
+      <Flex mb="4">
         <Box
           flex="1"
           bg="white"

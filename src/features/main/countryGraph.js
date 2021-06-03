@@ -1,7 +1,19 @@
-import { useMemo } from "react";
+import { Box } from "@chakra-ui/react";
+import { useEffect, useMemo, useState } from "react";
 import { Line } from "react-chartjs-2";
-
 export default function CountryGraph(props) {
+  const [graphWidth, setGraphWidth] = useState(0);
+  const [graphHeight, setGraphHeight] = useState(0);
+  const resizeGraph = () => {
+    const ele = document.getElementById("graphWrap").getBoundingClientRect();
+    setGraphWidth(ele.width);
+    setGraphHeight(ele.height);
+  };
+
+  useEffect(() => {
+    resizeGraph();
+    // alert("mounted");
+  }, [props]);
   const data = useMemo(() => {
     return {
       labels: props?.timeline?.map((i) => i.date).reverse(),
@@ -28,6 +40,7 @@ export default function CountryGraph(props) {
 
   const options = {
     animation: false,
+    responsive: true,
     scales: {
       yAxes: [
         {
@@ -38,5 +51,22 @@ export default function CountryGraph(props) {
       ],
     },
   };
-  return <Line data={data} options={options} />;
+
+  // Math.floor(Math.random() * 200) + 100
+  const width = graphWidth;
+  const height = graphHeight;
+  return (
+    <Box id="graphWrap">
+      <Line
+        data={data}
+        options={options}
+        // height="100%"
+        // width={width || 100}
+        // height={height || 100}
+        // onResize={() => {
+        //   alert("resize called");
+        // }}
+      />
+    </Box>
+  );
 }

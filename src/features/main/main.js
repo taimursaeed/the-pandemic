@@ -1,9 +1,9 @@
-import AppContext from "./../../context";
-import CountrySummary from "./countrySummary";
-import CountryGraph from "./countryGraph";
+import { Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { APL_BASE_URL } from "../../constant";
 import { client } from "../../utils";
+import CountryGraph from "./countryGraph";
+import CountrySummary from "./countrySummary";
 
 export default function Main(props) {
   const [country, setCountry] = useState("");
@@ -16,9 +16,9 @@ export default function Main(props) {
   }, [props]);
 
   return (
-    <>
+    <Flex flexDirection="column" height="100%">
       <CountrySummary {...country} />
       <CountryGraph {...country} />
-    </>
+    </Flex>
   );
 }

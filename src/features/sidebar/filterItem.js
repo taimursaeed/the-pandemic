@@ -21,10 +21,15 @@ export default function FilterItem(props) {
       colorScheme="black"
       variant="outline"
     >
-      <Flex justifyContent="space-between" flex="1" textAlign="left">
+      <Flex
+        justifyContent="space-between"
+        flex="1"
+        textAlign="left"
+        textTransform="capitalize"
+      >
         {props.name}
         <Box ml="4">
-          <strong>{props.code}</strong>
+          <strong>{props.code} </strong>
         </Box>
       </Flex>
     </Button>

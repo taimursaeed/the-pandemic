@@ -6,7 +6,7 @@ export default function Filter({ data, ...props }) {
   const [filterdItems, setFilterdItems] = useState(data);
 
   const getFilterdItems = (items, val = "") => {
-    return items?.filter((item) => item.name.includes(val));
+    return items?.filter((item) => item.name.toLowerCase().includes(val));
   };
 
   const handleChange = (e) => {
@@ -27,7 +27,7 @@ export default function Filter({ data, ...props }) {
           autoComplete="off"
           autoCorrect="off"
           colorScheme="facebook"
-          background="gray.100"
+          background="white"
           focusBorderColor="black"
         />
       </FormControl>

@@ -11,7 +11,7 @@ export default function Dashboard() {
           <Flex height="100%" flexDirection={["column", "row"]}>
             <Box
               bg="#FFC800"
-              pt={8}
+              pt={4}
               w={["100%", "350px"]}
               height={["500px", "100%"]}
               overflow="hidden"

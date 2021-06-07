@@ -72,7 +72,7 @@ export default function CountrySummary(props) {
                 separator=","
                 duration={0.5}
                 start={0}
-                end={props?.latest_data?.confirmed}
+                end={props?.latest_data?.confirmed || 0}
               ></CountUp>
             </Text>
           </SkeletonText>
@@ -156,7 +156,7 @@ export default function CountrySummary(props) {
                 separator=","
                 duration={0.5}
                 start={0}
-                end={props?.latest_data?.deaths}
+                end={props?.latest_data?.deaths || 0}
               ></CountUp>
             </Text>
           </SkeletonText>
@@ -197,7 +197,7 @@ export default function CountrySummary(props) {
                 separator=","
                 duration={0.5}
                 start={0}
-                end={props?.latest_data?.recovered}
+                end={props?.latest_data?.recovered || 0}
               ></CountUp>
             </Text>
           </SkeletonText>

@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 export default function FilterItem(props) {
   const history = useHistory();
   const handleClick = () => {
-    props.setItem(`${props.code}`);
     history.push(`/${props.code}`);
   };
   return (

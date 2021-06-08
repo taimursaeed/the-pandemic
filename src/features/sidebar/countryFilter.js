@@ -2,7 +2,6 @@ import { Flex, Skeleton } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { client } from "../../utils";
 import { APL_BASE_URL } from "./../../constant";
-import AppContext from "./../../context";
 import Filter from "./filter";
 
 export default function CountryFilter() {
@@ -21,40 +20,36 @@ export default function CountryFilter() {
     fetchCountries();
   }, []);
   return (
-    <AppContext.Consumer>
-      {(value) => (
-        <Flex flexDirection="column" overflow="auto" height="100%">
-          <Filter data={countries} setItem={value.setCountry} />
-          {!countries && (
-            <>
-              <Skeleton
-                isLoaded={countries}
-                mx="8"
-                mb="4"
-                height="20px"
-                startColor="yellow.500"
-                endColor="yellow.800"
-              />
-              <Skeleton
-                isLoaded={countries}
-                mx="8"
-                mb="4"
-                height="20px"
-                startColor="yellow.500"
-                endColor="yellow.800"
-              />
-              <Skeleton
-                isLoaded={countries}
-                mx="8"
-                mb="4"
-                height="20px"
-                startColor="yellow.500"
-                endColor="yellow.800"
-              />
-            </>
-          )}
-        </Flex>
+    <Flex flexDirection="column" overflow="auto" height="100%">
+      <Filter data={countries} />
+      {!countries && (
+        <>
+          <Skeleton
+            isLoaded={countries}
+            mx="8"
+            mb="4"
+            height="20px"
+            startColor="yellow.500"
+            endColor="yellow.800"
+          />
+          <Skeleton
+            isLoaded={countries}
+            mx="8"
+            mb="4"
+            height="20px"
+            startColor="yellow.500"
+            endColor="yellow.800"
+          />
+          <Skeleton
+            isLoaded={countries}
+            mx="8"
+            mb="4"
+            height="20px"
+            startColor="yellow.500"
+            endColor="yellow.800"
+          />
+        </>
       )}
-    </AppContext.Consumer>
+    </Flex>
   );
 }

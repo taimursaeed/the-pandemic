@@ -34,175 +34,69 @@ export default function CountrySummary(props) {
           </Flex>
         </Skeleton>
       </Flex>
-      <Flex mb="4" flexWrap={["wrap", "nowrap"]}>
-        <Box
-          flex={["100%", "1"]}
-          bg="white"
-          boxShadow="sm"
-          p="4"
-          rounded="8"
-          color="black"
-          border="1px"
-          borderColor="gray.200"
-          mb={["4", "0"]}
-          mr={["0", "8"]}
-        >
-          <Heading
-            as="h3"
-            size="sm"
-            mb="2"
-            fontWeight="normal"
-            whiteSpace="nowrap"
-          >
-            <Text
-              style={{
-                width: "0.75rem",
-                height: "0.75rem",
-                display: "inline-block",
-                borderRadius: "100%",
-              }}
-              background="blue.400"
-              mr="2"
-            ></Text>
-            Total
-          </Heading>
-          <SkeletonText isLoaded={props?.latest_data?.confirmed}>
-            <Text fontSize="2xl" fontWeight="bold">
-              <CountUp
-                separator=","
-                duration={0.5}
-                start={0}
-                end={props?.latest_data?.confirmed || 0}
-              ></CountUp>
-            </Text>
-          </SkeletonText>
-        </Box>
-
-        <Box
-          flex={["100%", "1"]}
-          bg="white"
-          boxShadow="sm"
-          p="4"
-          rounded="8"
-          border="1px"
-          borderColor="gray.200"
-          mb={["4", "0"]}
-          mr={["0", "8"]}
-        >
-          <Heading
-            as="h3"
-            size="sm"
-            mb="2"
-            fontWeight="normal"
-            whiteSpace="nowrap"
-          >
-            <Text
-              style={{
-                width: "0.75rem",
-                height: "0.75rem",
-                display: "inline-block",
-                borderRadius: "100%",
-              }}
-              background="orange.400"
-              mr="2"
-            ></Text>
-            Active
-          </Heading>
-
-          <SkeletonText isLoaded={props?.timeline?.[0]?.active || 0}>
-            <Text fontSize="2xl" fontWeight="bold">
-              <CountUp
-                separator=","
-                duration={0.5}
-                start={0}
-                end={props?.timeline?.[0]?.active || 0}
-              ></CountUp>
-            </Text>
-          </SkeletonText>
-        </Box>
-        <Box
-          flex={["100%", "1"]}
-          bg="white"
-          boxShadow="sm"
-          p="4"
-          rounded="8"
-          border="1px"
-          borderColor="gray.200"
-          mb={["4", "0"]}
-          mr={["0", "8"]}
-        >
-          <Heading
-            as="h3"
-            size="sm"
-            mb="2"
-            fontWeight="normal"
-            whiteSpace="nowrap"
-          >
-            <Text
-              style={{
-                width: "0.75rem",
-                height: "0.75rem",
-                display: "inline-block",
-                borderRadius: "100%",
-              }}
-              background="red.400"
-              mr="2"
-            ></Text>
-            Fatal
-          </Heading>
-          <SkeletonText isLoaded={props?.latest_data?.deaths}>
-            <Text fontSize="2xl" fontWeight="bold">
-              <CountUp
-                separator=","
-                duration={0.5}
-                start={0}
-                end={props?.latest_data?.deaths || 0}
-              ></CountUp>
-            </Text>
-          </SkeletonText>
-        </Box>
-        <Box
-          flex={["100%", "1"]}
-          bg="white"
-          boxShadow="sm"
-          p="4"
-          rounded="8"
-          border="1px"
-          borderColor="gray.200"
-          mb={["4", "0"]}
-          mr={["0", "0"]}
-        >
-          <Heading
-            as="h3"
-            size="sm"
-            mb="2"
-            fontWeight="normal"
-            whiteSpace="nowrap"
-          >
-            <Text
-              style={{
-                width: "0.75rem",
-                height: "0.75rem",
-                display: "inline-block",
-                borderRadius: "100%",
-              }}
-              background="green.400"
-              mr="2"
-            ></Text>
-            Recovered
-          </Heading>
-          <SkeletonText isLoaded={props?.latest_data?.recovered}>
-            <Text fontSize="2xl" fontWeight="bold">
-              <CountUp
-                separator=","
-                duration={0.5}
-                start={0}
-                end={props?.latest_data?.recovered || 0}
-              ></CountUp>
-            </Text>
-          </SkeletonText>
-        </Box>
+      <Flex mb="4" flexWrap={["wrap", "nowrap"]} mr={["0", "-8"]}>
+        <SummaryBox
+          title="Total"
+          color="blue.400"
+          data={props?.latest_data?.confirmed || 0}
+        />
+        <SummaryBox
+          title="Active"
+          color="orange.400"
+          data={props?.timeline?.[0]?.active || 0}
+        />
+        <SummaryBox
+          title="Fatal"
+          color="red.400"
+          data={props?.latest_data?.deaths || 0}
+        />
+        <SummaryBox
+          title="Recovered"
+          color="green.400"
+          data={props?.latest_data?.recovered || 0}
+        />
       </Flex>
     </>
   );
 }
+
+const SummaryBox = (props) => {
+  return (
+    <Box
+      flex={["100%", "1"]}
+      bg="white"
+      boxShadow="sm"
+      p="4"
+      rounded="8"
+      color="black"
+      border="1px"
+      borderColor="gray.200"
+      mb={["4", "0"]}
+      mr={["0", "8"]}
+    >
+      <Heading as="h3" size="sm" mb="2" fontWeight="normal" whiteSpace="nowrap">
+        <Text
+          style={{
+            width: "0.75rem",
+            height: "0.75rem",
+            display: "inline-block",
+            borderRadius: "100%",
+          }}
+          background={props.color}
+          mr="2"
+        ></Text>
+        {props.title}
+      </Heading>
+      <SkeletonText isLoaded={props.data}>
+        <Text fontSize="2xl" fontWeight="bold">
+          <CountUp
+            separator=","
+            duration={0.5}
+            start={0}
+            end={props.data}
+          ></CountUp>
+        </Text>
+      </SkeletonText>
+    </Box>
+  );
+};
